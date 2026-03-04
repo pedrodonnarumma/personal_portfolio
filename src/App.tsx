@@ -7,7 +7,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 
 function App() {
-  const [language, setLanguage] = useState('es');
+  const [language, setLanguage] = useState('en');
   const scrollContainerRef = useSmoothScroll();
 
   const toggleLanguage = () => {
