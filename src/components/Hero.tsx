@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import cvEnglish from '../files/CV_Pedro_Donnarumma_Systems_Engineer.pdf';
-import cvSpanish from '../files/CV_Pedro_Donnarumma_Ingeniero_Sistemas.pdf';
+import cvEnglish from '../files/Resume - Pedro Donnarumma.pdf';
+import cvSpanish from '../files/CV - Pedro Donnarumma.pdf';
 
 interface HeroProps {
   language: string;
