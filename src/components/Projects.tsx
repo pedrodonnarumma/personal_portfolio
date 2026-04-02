@@ -96,7 +96,7 @@ const Projects = ({ language }: ProjectsProps) => {
       technologies: ['Python', 'Streamlit', 'Google Maps API'],
       demoUrl: 'https://demo.example.com',
       githubUrl: 'https://github.com/pedrodonnarumma/BairesProp',
-      images: ['/project2-1.jpg', '/project2-2.jpg']
+      images: []
     },
     {
       id: 3,
@@ -116,14 +116,14 @@ const Projects = ({ language }: ProjectsProps) => {
   return (
     <section 
       id="projects" 
-      className="min-h-screen w-full flex items-center justify-center bg-slate-900 snap-start px-4 py-20"
+      className="min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 px-4 py-20"
     >
       <div className="max-w-7xl w-full">
-        <h2 className="text-5xl font-bold mb-12 text-white text-center">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-white text-center">
           {language === 'es' ? 'Proyectos Destacados' : 'Featured Projects'}
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {projects.map((project) => {
             const isHovered = hoveredProject === project.id;
             const title = language === 'es' ? project.title : project.titleEn;
@@ -133,28 +133,29 @@ const Projects = ({ language }: ProjectsProps) => {
             return (
               <div
                 key={project.id}
-                className="relative h-[480px]"
+                className="relative sm:h-[480px]"
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
               >
                 <div
                   className={`
-                    absolute top-0 left-0 right-0 bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm
-                    border rounded-2xl p-6 cursor-pointer
+                    bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm
+                    border rounded-2xl p-4 sm:p-6 cursor-pointer
                     transition-all duration-700 ease-in-out
                     flex flex-col
+                    sm:absolute sm:top-0 sm:left-0 sm:right-0
                     ${isHovered 
-                      ? 'border-blue-500/50 shadow-2xl shadow-blue-500/20 h-[480px]' 
-                      : 'border-slate-700/50 shadow-lg h-[280px]'
+                      ? 'border-blue-500/50 shadow-2xl shadow-blue-500/20 min-h-full sm:h-[480px]' 
+                      : 'border-slate-700/50 shadow-lg sm:h-[280px]'
                     }
                   `}
                 >
                   {/* Normal State: Title + Tech Chips */}
-                  <div className={`transition-all duration-700 ease-in-out ${isHovered ? 'opacity-0 invisible' : 'opacity-100 visible'}`}>
-                    <h3 className="text-2xl font-bold text-white mb-2 line-clamp-2">
+                  <div className={`transition-all duration-700 ease-in-out ${isHovered ? 'hidden sm:opacity-0 sm:invisible' : 'block sm:opacity-100 sm:visible'}`}>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 line-clamp-2">
                       {title}
                     </h3>
-                    <p className="text-slate-400 text-sm mb-4">
+                    <p className="text-slate-400 text-xs sm:text-sm mb-4">
                       {subtitle}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -170,11 +171,11 @@ const Projects = ({ language }: ProjectsProps) => {
                   </div>
 
                   {/* Hover State: Full Content */}
-                  <div className={`absolute inset-0 p-6 transition-all duration-700 ease-in-out ${isHovered ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-                    <h3 className="text-xl font-bold text-white mb-1">
+                  <div className={`sm:absolute sm:inset-0 sm:p-6 transition-all duration-700 ease-in-out ${isHovered ? 'block sm:opacity-100 sm:visible' : 'hidden sm:opacity-0 sm:invisible'}`}>
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
                       {title}
                     </h3>
-                    <p className="text-slate-400 text-xs mb-3">
+                    <p className="text-slate-400 text-xs sm:text-xs mb-3">
                       {subtitle}
                     </p>
                     
@@ -261,24 +262,12 @@ const Projects = ({ language }: ProjectsProps) => {
                     )}
 
                     {/* Action Buttons */}
-                    <div className="flex gap-3">
-                      <a
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition-colors duration-200"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                        Demo
-                      </a>
+                    <div className="flex justify-center">
                       <a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-white text-sm font-medium rounded-lg transition-colors duration-200"
+                        className="flex items-center justify-center gap-2 px-6 py-2.5 bg-slate-700 hover:bg-slate-600 text-white text-sm font-medium rounded-lg transition-colors duration-200 min-w-[140px]"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

@@ -30,25 +30,25 @@ const Languages = ({ language }: LanguagesProps) => {
   return (
     <section 
       id="languages" 
-      className="min-h-screen w-full flex items-center justify-center bg-slate-950 snap-start px-4 py-20"
+      className="min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900 px-4 py-20"
     >
       <div className="max-w-6xl w-full">
-        <h2 className="text-5xl font-bold mb-12 text-white text-center">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-white text-center">
           {language === 'es' ? 'Lenguajes & Tecnologías' : 'Languages & Technologies'}
         </h2>
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
           {technologies.map((tech) => (
             <div
               key={tech.name}
-              className="bg-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 flex flex-col items-center justify-center gap-4 hover:border-blue-500/50 hover:bg-slate-800/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20"
+              className="bg-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 sm:p-6 flex flex-col items-center justify-center gap-3 sm:gap-4 hover:border-blue-500/50 hover:bg-slate-800/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20"
             >
               <img 
                 src={tech.icon} 
                 alt={tech.name}
-                className="w-16 h-16 object-contain"
+                className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
               />
-              <span className="text-slate-300 font-medium text-center text-sm">
+              <span className="text-slate-300 font-medium text-center text-xs sm:text-sm">
                 {tech.name}
               </span>
             </div>

@@ -6,14 +6,14 @@ const Contact = ({ language }: ContactProps) => {
   return (
     <section 
       id="contact" 
-      className="min-h-screen w-full flex items-center justify-center bg-slate-950 snap-start px-4"
+      className="min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900 px-4"
     >
       <div className="max-w-4xl w-full text-center">
-        <h2 className="text-5xl font-bold mb-6 text-white">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white">
           {language === 'es' ? 'Contáctame' : 'Contact Me'}
         </h2>
         
-        <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg md:text-xl text-slate-300 mb-8 sm:mb-12 max-w-2xl mx-auto">
           {language === 'es' 
             ? '¿Tienes un proyecto en mente o simplemente quieres conectar? Me encantaría saber de ti.' 
             : 'Have a project in mind or just want to connect? I\'d love to hear from you.'}

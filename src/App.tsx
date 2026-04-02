@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useSmoothScroll } from './hooks/useSmoothScroll';
 import Hero from './components/Hero';
 import About from './components/About';
 import Languages from './components/Languages';
@@ -8,18 +7,17 @@ import Contact from './components/Contact';
 
 function App() {
   const [language, setLanguage] = useState('en');
-  const scrollContainerRef = useSmoothScroll();
 
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'es' ? 'en' : 'es');
   };
 
   return (
-    <div ref={scrollContainerRef} className="relative h-screen overflow-y-auto scroll-container">
+    <div className="relative min-h-screen overflow-y-auto">
       {/* Language Toggle Button */}
       <button
         onClick={toggleLanguage}
-        className="fixed top-6 right-6 z-50 bg-gray-800  text-white px-4 py-2 rounded-lg shadow-lg hover:bg-gray-700 transition-colors duration-300 font-semibold border border-blue-500"
+        className="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 bg-gray-800 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg shadow-lg hover:bg-gray-700 transition-colors duration-300 font-semibold border border-blue-500 text-sm sm:text-base"
       >
         {language === 'es' ? 'EN' : 'ES'}
       </button>
