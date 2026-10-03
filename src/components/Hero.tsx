@@ -8,13 +8,11 @@ interface HeroProps {
 
 const Hero = ({ language }: HeroProps) => {
   const [displayedText, setDisplayedText] = useState('');
-  const [isTypingComplete, setIsTypingComplete] = useState(false);
-  
-  const text = language === 'es' ? 'Ingeniero en sistemas' : 'Systems Engineer';
+    
+  const text = language === 'es' ? 'Ingeniero en Sistemas' : 'Systems Engineer';
 
   useEffect(() => {
     setDisplayedText('');
-    setIsTypingComplete(false);
     let currentIndex = 0;
     
     const typingInterval = setInterval(() => {
@@ -22,10 +20,9 @@ const Hero = ({ language }: HeroProps) => {
         setDisplayedText(text.slice(0, currentIndex));
         currentIndex++;
       } else {
-        setIsTypingComplete(true);
         clearInterval(typingInterval);
       }
-    }, 80); // 100ms por carácter
+    }, 80);
 
     return () => clearInterval(typingInterval);
   }, [text]);
@@ -44,11 +41,11 @@ const Hero = ({ language }: HeroProps) => {
     >
       <div className="text-center px-4 sm:px-6">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
-          {language === 'es' ? '¡Hola! Soy PEDRO DONNARUMMA' : '¡Hi! I\'m PEDRO DONNARUMMA'}
+          {language === 'es' ? '¡Hola! Soy PEDRO DONNARUMMA' : 'Hi! I\'m PEDRO DONNARUMMA'}
         </h1>
         <p className="text-lg sm:text-xl md:text-2xl text-blue-400 mb-8 font-mono">
           <span className="text-blue-400">&gt;</span> {displayedText}
-          <span className={`inline-block w-0.5 h-6 bg-blue-400 ml-1 ${isTypingComplete ? 'animate-blink' : 'animate-blink'}`}></span>
+          <span className="inline-block w-0.5 h-6 bg-blue-400 ml-1 animate-blink"></span>
         </p>
         
         {/* Buttons */}

@@ -22,16 +22,15 @@ interface Project {
   description: string;
   descriptionEn: string;
   technologies: string[];
-  demoUrl: string;
-  githubUrl: string;
-  images: (string | any)[];
+  githubUrl?: string;
+  images: string[];
 }
 
 const Projects = ({ language }: ProjectsProps) => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [carouselIndex, setCarouselIndex] = useState<{ [key: number]: number }>({});
   const [modalImage, setModalImage] = useState<{
-    images: (string | any)[];
+    images: string[];
     currentIndex: number;
   } | null>(null);
 
@@ -81,8 +80,6 @@ const Projects = ({ language }: ProjectsProps) => {
       description: 'Plataforma para conectar empresas locales con estudiantes universitarios. Facilita la colaboración y el desarrollo de habilidades prácticas.',
       descriptionEn: 'Platform to connect local businesses with university students. Facilitates collaboration and the development of practical skills.',
       technologies: ['Java', 'Spring Boot', 'React', 'MySQL','Docker','TypeScript','Python'],
-      demoUrl: 'https://demo.example.com',
-      githubUrl: 'https://github.com/tuusuario/proyecto3',
       images: [innovaMap1, innovaMap2, innovaMap3, innovaMap4, innovaMap5]
     },
     {
@@ -91,10 +88,9 @@ const Projects = ({ language }: ProjectsProps) => {
       titleEn: 'BairesProp',
       subtitle: 'Predictor de precios inmobiliarios',
       subtitleEn: 'Real estate price predictor',
-      description: 'Sistema para predecir precios de una propiedad. Se realizo un Web Scraping de propiedades reales y se entreno un modelo para obtener predicciones precisas.',
+      description: 'Sistema para predecir precios de una propiedad. Se realizó un Web Scraping de propiedades reales y se entrenó un modelo para obtener predicciones precisas.',
       descriptionEn: 'System for predicting property prices. Web scraping of real properties was performed and a model was trained to obtain accurate predictions.',
       technologies: ['Python', 'Streamlit', 'Google Maps API'],
-      demoUrl: 'https://demo.example.com',
       githubUrl: 'https://github.com/pedrodonnarumma/BairesProp',
       images: []
     },
@@ -107,7 +103,6 @@ const Projects = ({ language }: ProjectsProps) => {
       description: 'Sistema de identificación de residuos asistido por imagen. Proporciona la categoría del material, los puntos de reciclaje para optimizar el proceso de reciclaje y fomentar la economía circular.',
       descriptionEn: 'Image-assisted waste identification system. Provides material category and recycling points to optimize the recycling process and promote a circular economy.',
       technologies: ['Python', 'Streamlit', 'Google Maps API'],
-      demoUrl: 'https://demo.example.com',
       githubUrl: 'https://github.com/pedrodonnarumma/GreenAI',
       images: [greenAi1, greenAi2, greenAi3, greenAi4]
     }
@@ -262,6 +257,7 @@ const Projects = ({ language }: ProjectsProps) => {
                     )}
 
                     {/* Action Buttons */}
+                    {project.githubUrl && (
                     <div className="flex justify-center">
                       <a
                         href={project.githubUrl}
@@ -276,6 +272,7 @@ const Projects = ({ language }: ProjectsProps) => {
                         {language === 'es' ? 'Código' : 'Code'}
                       </a>
                     </div>
+                    )}
                   </div>
                 </div>
               </div>
