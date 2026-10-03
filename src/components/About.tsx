@@ -1,3 +1,4 @@
+import { User } from 'lucide-react';
 interface AboutProps {
   language: string;
 }
@@ -9,6 +10,9 @@ const About = ({ language }: AboutProps) => {
       className="min-h-screen w-full flex items-center justify-center px-4"
     >
       <div className="max-w-4xl w-full">
+        <span className="glass mx-auto mb-5 grid h-12 w-12 place-items-center rounded-2xl text-blue-300">
+          <User className="h-6 w-6" aria-hidden="true" />
+        </span>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-gradient text-center">
           {language === 'es' ? 'Sobre mí' : 'About me'}
         </h2>

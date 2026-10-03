@@ -1,3 +1,4 @@
+import { Layers } from 'lucide-react';
 import pythonIcon from '../icons/python-original.svg';
 import javaIcon from '../icons/java-original.svg';
 import typescriptIcon from '../icons/typescript-original.svg';
@@ -33,6 +34,9 @@ const Languages = ({ language }: LanguagesProps) => {
       className="min-h-screen w-full flex items-center justify-center px-4 py-20"
     >
       <div className="max-w-6xl w-full">
+        <span className="glass mx-auto mb-5 grid h-12 w-12 place-items-center rounded-2xl text-blue-300">
+          <Layers className="h-6 w-6" aria-hidden="true" />
+        </span>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-gradient text-center">
           {language === 'es' ? 'Lenguajes & Tecnologías' : 'Languages & Technologies'}
         </h2>

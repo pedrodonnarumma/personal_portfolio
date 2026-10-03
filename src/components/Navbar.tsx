@@ -1,3 +1,4 @@
+import { Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 interface NavbarProps {
@@ -61,7 +62,7 @@ const Navbar = ({ language, onToggleLanguage }: NavbarProps) => {
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-4">
       <nav
-        className={`mx-auto w-full md:w-fit rounded-2xl transition-all duration-500 ${
+        className={`ml-auto md:mx-auto md:w-fit rounded-2xl transition-all duration-500 ${isMenuOpen ? 'w-full' : 'w-fit'} ${
           isMenuOpen
             ? 'glass-strong bg-ink-900/90'
             : isScrolled
@@ -69,13 +70,7 @@ const Navbar = ({ language, onToggleLanguage }: NavbarProps) => {
               : 'border border-transparent'
         }`}
       >
-        <div className="flex items-center justify-between gap-4 px-4 py-3 md:gap-3 md:px-3 md:py-2.5">
-          <a href="#hero" className="flex items-center text-white" aria-label="Pedro Donnarumma" onClick={() => setIsMenuOpen(false)}>
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-blue-600 font-mono text-sm font-bold shadow-lg shadow-blue-600/30">
-              PD
-            </span>
-          </a>
-
+        <div className="flex items-center justify-end gap-2 px-2 py-2 md:gap-3 md:px-3 md:py-2.5">
           <div className="hidden items-center gap-1 md:flex">
             {links.map((link) => (
               <a
@@ -102,13 +97,7 @@ const Navbar = ({ language, onToggleLanguage }: NavbarProps) => {
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
             >
-              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7h16M4 12h16M4 17h16" />
-                )}
-              </svg>
+              {isMenuOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
             </button>
           </div>
         </div>
