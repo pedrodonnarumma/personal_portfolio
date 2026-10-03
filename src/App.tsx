@@ -5,6 +5,7 @@ import Languages from './components/Languages';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Background from './components/Background';
+import Navbar from './components/Navbar';
 
 function App() {
   const [language, setLanguage] = useState('en');
@@ -14,16 +15,10 @@ function App() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-y-auto">
+    <div className="relative min-h-screen">
       <Background />
 
-      {/* Language Toggle Button */}
-      <button
-        onClick={toggleLanguage}
-        className="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 glass-strong text-white px-3 py-2 sm:px-4 sm:py-2 rounded-xl shadow-lg hover:bg-white/15 transition-colors duration-300 font-semibold text-sm sm:text-base"
-      >
-        {language === 'es' ? 'EN' : 'ES'}
-      </button>
+      <Navbar language={language} onToggleLanguage={toggleLanguage} />
 
       {/* Sections */}
       <Hero language={language} />
