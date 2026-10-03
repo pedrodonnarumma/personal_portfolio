@@ -10,6 +10,7 @@ import innovaMap2 from '../images/InnovaMap2.png';
 import innovaMap3 from '../images/InnovaMap3.png';
 import innovaMap4 from '../images/InnovaMap4.png';
 import innovaMap5 from '../images/Innovamap5.png';
+import Reveal from './Reveal';
 
 interface ProjectsProps {
   language: string;
@@ -116,23 +117,25 @@ const Projects = ({ language }: ProjectsProps) => {
       className="min-h-screen w-full flex items-center justify-center px-4 py-20"
     >
       <div className="max-w-7xl w-full">
-        <span className="glass mx-auto mb-5 grid h-12 w-12 place-items-center rounded-2xl text-blue-300">
-          <FolderGit2 className="h-6 w-6" aria-hidden="true" />
-        </span>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-gradient text-center">
-          {language === 'es' ? 'Proyectos Destacados' : 'Featured Projects'}
-        </h2>
+        <Reveal>
+          <span className="glass mx-auto mb-5 grid h-12 w-12 place-items-center rounded-2xl text-blue-300">
+            <FolderGit2 className="h-6 w-6" aria-hidden="true" />
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-gradient text-center">
+            {language === 'es' ? 'Proyectos Destacados' : 'Featured Projects'}
+          </h2>
+        </Reveal>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {projects.map((project) => {
+          {projects.map((project, index) => {
             const isHovered = hoveredProject === project.id;
             const title = language === 'es' ? project.title : project.titleEn;
             const subtitle = language === 'es' ? project.subtitle : project.subtitleEn;
             const description = language === 'es' ? project.description : project.descriptionEn;
 
             return (
+              <Reveal key={project.id} delay={index * 120}>
               <div
-                key={project.id}
                 className="relative sm:h-[480px]"
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
@@ -140,7 +143,7 @@ const Projects = ({ language }: ProjectsProps) => {
                 <div
                   className={`
                     glass rounded-2xl p-4 sm:p-6 cursor-pointer
-                    transition-all duration-700 ease-in-out
+                    transition-all duration-500 ease-out
                     flex flex-col
                     sm:absolute sm:top-0 sm:left-0 sm:right-0
                     ${isHovered 
@@ -150,7 +153,7 @@ const Projects = ({ language }: ProjectsProps) => {
                   `}
                 >
                   {/* Normal State: Title + Tech Chips */}
-                  <div className={`transition-all duration-700 ease-in-out ${isHovered ? 'hidden sm:opacity-0 sm:invisible' : 'block sm:opacity-100 sm:visible'}`}>
+                  <div className={`transition-all duration-500 ease-out ${isHovered ? 'hidden sm:opacity-0 sm:invisible' : 'block sm:opacity-100 sm:visible'}`}>
                     <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 line-clamp-2">
                       {title}
                     </h3>
@@ -170,7 +173,7 @@ const Projects = ({ language }: ProjectsProps) => {
                   </div>
 
                   {/* Hover State: Full Content */}
-                  <div className={`sm:absolute sm:inset-0 sm:p-6 transition-all duration-700 ease-in-out ${isHovered ? 'block sm:opacity-100 sm:visible' : 'hidden sm:opacity-0 sm:invisible'}`}>
+                  <div className={`sm:absolute sm:inset-0 sm:p-6 transition-all duration-500 ease-out ${isHovered ? 'block sm:opacity-100 sm:visible' : 'hidden sm:opacity-0 sm:invisible'}`}>
                     <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
                       {title}
                     </h3>
@@ -274,6 +277,7 @@ const Projects = ({ language }: ProjectsProps) => {
                   </div>
                 </div>
               </div>
+              </Reveal>
             );
           })}
         </div>

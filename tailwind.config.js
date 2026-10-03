@@ -17,12 +17,17 @@ export default {
         },
       },
       keyframes: {
+        'fade-up': {
+          from: { opacity: '0', transform: 'translateY(16px)' },
+          to: { opacity: '1', transform: 'none' },
+        },
         drift: {
           '0%, 100%': { transform: 'translate3d(0, 0, 0) scale(1)' },
           '50%': { transform: 'translate3d(4%, 6%, 0) scale(1.08)' },
         },
       },
       animation: {
+        'fade-up': 'fade-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both',
         'drift-slow': 'drift 18s ease-in-out infinite',
         'drift-slower': 'drift 26s ease-in-out infinite reverse',
       },

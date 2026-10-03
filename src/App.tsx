@@ -9,9 +9,16 @@ import Navbar from './components/Navbar';
 
 function App() {
   const [language, setLanguage] = useState('en');
+  const [isSwitchingLanguage, setIsSwitchingLanguage] = useState(false);
 
+  // Fundido corto: el texto se apaga, cambia de idioma y vuelve a aparecer
   const toggleLanguage = () => {
-    setLanguage(prev => prev === 'es' ? 'en' : 'es');
+    if (isSwitchingLanguage) return;
+    setIsSwitchingLanguage(true);
+    window.setTimeout(() => {
+      setLanguage(prev => prev === 'es' ? 'en' : 'es');
+      setIsSwitchingLanguage(false);
+    }, 180);
   };
 
   return (
@@ -20,12 +27,13 @@ function App() {
 
       <Navbar language={language} onToggleLanguage={toggleLanguage} />
 
-      {/* Sections */}
-      <Hero language={language} />
-      <About language={language} />
-      <Languages language={language} />
-      <Projects language={language} />
-      <Contact language={language} />
+      <main className={`transition-opacity duration-200 ${isSwitchingLanguage ? 'opacity-0' : 'opacity-100'}`}>
+        <Hero language={language} />
+        <About language={language} />
+        <Languages language={language} />
+        <Projects language={language} />
+        <Contact language={language} />
+      </main>
     </div>
   );
 }

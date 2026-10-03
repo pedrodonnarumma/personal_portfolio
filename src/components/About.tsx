@@ -1,4 +1,5 @@
 import { User } from 'lucide-react';
+import Reveal from './Reveal';
 interface AboutProps {
   language: string;
 }
@@ -10,13 +11,16 @@ const About = ({ language }: AboutProps) => {
       className="min-h-screen w-full flex items-center justify-center px-4"
     >
       <div className="max-w-4xl w-full">
-        <span className="glass mx-auto mb-5 grid h-12 w-12 place-items-center rounded-2xl text-blue-300">
-          <User className="h-6 w-6" aria-hidden="true" />
-        </span>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-gradient text-center">
-          {language === 'es' ? 'Sobre mí' : 'About me'}
-        </h2>
+        <Reveal>
+          <span className="glass mx-auto mb-5 grid h-12 w-12 place-items-center rounded-2xl text-blue-300">
+            <User className="h-6 w-6" aria-hidden="true" />
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-gradient text-center">
+            {language === 'es' ? 'Sobre mí' : 'About me'}
+          </h2>
+        </Reveal>
         
+        <Reveal delay={120}>
         <div className="glass rounded-2xl p-6 sm:p-8 hover:border-white/20 transition-all duration-300">
           <div className="text-base sm:text-lg text-slate-200 leading-relaxed text-center">
             {language === 'es' ? (
@@ -38,6 +42,7 @@ const About = ({ language }: AboutProps) => {
             )}
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   );
