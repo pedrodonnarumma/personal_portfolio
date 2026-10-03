@@ -61,7 +61,7 @@ const Navbar = ({ language, onToggleLanguage }: NavbarProps) => {
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-4">
       <nav
-        className={`mx-auto max-w-6xl rounded-2xl transition-all duration-500 ${
+        className={`mx-auto w-full md:w-fit rounded-2xl transition-all duration-500 ${
           isMenuOpen
             ? 'glass-strong bg-ink-900/90'
             : isScrolled
@@ -69,12 +69,11 @@ const Navbar = ({ language, onToggleLanguage }: NavbarProps) => {
               : 'border border-transparent'
         }`}
       >
-        <div className="flex items-center justify-between gap-4 px-4 py-3 sm:px-5">
-          <a href="#hero" className="flex items-center gap-3 text-white" onClick={() => setIsMenuOpen(false)}>
+        <div className="flex items-center justify-between gap-4 px-4 py-3 md:gap-3 md:px-3 md:py-2.5">
+          <a href="#hero" className="flex items-center text-white" aria-label="Pedro Donnarumma" onClick={() => setIsMenuOpen(false)}>
             <span className="grid h-9 w-9 place-items-center rounded-xl bg-blue-600 font-mono text-sm font-bold shadow-lg shadow-blue-600/30">
               PD
             </span>
-            <span className="hidden font-semibold tracking-tight sm:inline">Pedro Donnarumma</span>
           </a>
 
           <div className="hidden items-center gap-1 md:flex">
