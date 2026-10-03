@@ -111,10 +111,10 @@ const Projects = ({ language }: ProjectsProps) => {
   return (
     <section 
       id="projects" 
-      className="min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 px-4 py-20"
+      className="min-h-screen w-full flex items-center justify-center px-4 py-20"
     >
       <div className="max-w-7xl w-full">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-white text-center">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-gradient text-center">
           {language === 'es' ? 'Proyectos Destacados' : 'Featured Projects'}
         </h2>
         
@@ -134,14 +134,13 @@ const Projects = ({ language }: ProjectsProps) => {
               >
                 <div
                   className={`
-                    bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-sm
-                    border rounded-2xl p-4 sm:p-6 cursor-pointer
+                    glass rounded-2xl p-4 sm:p-6 cursor-pointer
                     transition-all duration-700 ease-in-out
                     flex flex-col
                     sm:absolute sm:top-0 sm:left-0 sm:right-0
                     ${isHovered 
-                      ? 'border-blue-500/50 shadow-2xl shadow-blue-500/20 min-h-full sm:h-[480px]' 
-                      : 'border-slate-700/50 shadow-lg sm:h-[280px]'
+                      ? 'border-blue-400/40 shadow-2xl shadow-blue-500/20 min-h-full sm:h-[480px]' 
+                      : 'shadow-lg sm:h-[280px]'
                     }
                   `}
                 >
@@ -263,7 +262,7 @@ const Projects = ({ language }: ProjectsProps) => {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 px-6 py-2.5 bg-slate-700 hover:bg-slate-600 text-white text-sm font-medium rounded-lg transition-colors duration-200 min-w-[140px]"
+                        className="flex items-center justify-center gap-2 px-6 py-2.5 glass hover:bg-white/10 hover:border-white/20 text-white text-sm font-medium rounded-lg transition-colors duration-200 min-w-[140px]"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -284,7 +283,7 @@ const Projects = ({ language }: ProjectsProps) => {
       {/* Image Modal */}
       {modalImage && (
         <div 
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-ink-950/80 backdrop-blur-md flex items-center justify-center p-4"
           onClick={() => setModalImage(null)}
         >
           {/* Close Button */}
